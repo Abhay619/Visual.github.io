@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/bubble.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;600;700&family=Jura:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../CSS/index.css"> -->
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid p-0">
+            <nav id="navbar" class="navbar navbar-dark navbar-expand-xlg p-0">
+                <div>
+                    <div class="symbol" onclick="openNav()">&#9776;</div>
+
+                    <div id="brand-name" class="navbar-header">
+                        <a href="../index.html" class="navbar-brand">
+                            <h3 id="heading" style="font-size: xx-large; font-weight: 700;">VisuAL</h3>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="mySidebar" class="sidenav">
+            <a href="#" class="closebtn side-element pl-3" onclick="closeNav()">&times;</a>
+            <div><a href="../index.html" class="side-element pl-3 pb-5 border-bottom"><i class="fa fa-home"></i> Home</a></div>
+            <span class="side-element pl-3 pb-5"><i class="fa fa-bar-chart"></i> Sorts</span>
+            <span class="sort-type pl-3">Quadratic</span>
+            <ul>
+                <li><a href="./bubble.html">Bubble Sort</a></li>
+                <li><a href="./selection.html">Seletion Sort</a></li>
+                <li><a href="./insertion.html">Insertion sort</a></li>
+                <li><a href="./bucket.html">Bucket sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Lograthmic</span>
+            <ul>
+                <li><a href="./quick.html">Quick Sort</a></li>
+                <li><a href="./merge.html">Merge Sort</a></li>
+                <li><a href="./heap.html">Heap sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Weird</span>
+            <ul>
+                <li><a href="./radix.html">Radix Sort</a></li>
+                <li><a href="./counting.html">Counting Sort</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <h1 class="text-light ml-5 mt-5 mb-5 s_head">Q U I C K&nbsp&nbsp S O R T</h1>
+    <div class="container container2">
+        <div class="row text-center">
+            <div class="col col-8 ml-5 bars_container" id="bars_container">
+            </div>
+
+            <div class="col buttons_container">
+                <h3 class="text-light">SIZE <span id="demo"></span></h3>
+                <input type="range" id="slider" min="10" max="50" step="5" value="10" />
+                <button id="randomize_array_btn" class="button-64 mb-5 mt-5" style="font-family: 'Changa', sans-serif "><span id="boot-icon"
+                        class="bi bi-shuffle"></span></button>
+                <button id="sort_btn" class="button-64 " style="font-family: 'Changa', sans-serif ">Sort</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid content-desc">
+        <div class="row">
+            <div class="col col-lg-6 col-sm-12 text-white" id="desreption">
+                <h2 class="mb-4" style="font-size: xx-large; font-weight: 700;" >DESCRIPTION</h2>
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    Quick Sort works on the principle "divide and conquer". It recursively applies itself on smaller parts of array until it is not sorted. <br><br> 
+                    Firstly, a pivot and index item are selected on the unsorted array or its part. Assume pivot is the rightmost item and index is the leftmost. Next, each item of the array except pivot is compared with the pivot. If a current item is less or equal to the pivot, it is swapped with the index item, next in order item becomes an index. <br><br>
+                    Finally, index and pivot are swapped and this way pivot is on its final position. <br><br>
+
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="text-white text-center" id="complex" style="font-size: xx-large; font-weight: 700;"  >COMPLEXITY</div>
+                <div class="p-3" data-aos="flip-left" data-aos-duration="1000" id="comp">
+                    <table class="sort-table text-white" >
+                        <tr>
+                            <th>Average Complexity</th>
+                            <td>Θ(n*log n)</td>
+                        </tr>
+                        <tr>
+                            <th>Best Case</th>
+                            <td>Ω(n*log n)</td>
+                        </tr>
+                        <tr>
+                            <th>Worst Case</th>
+                            <td>O(n<sup>2</sup>)</td>
+                        </tr>
+                        <tr>
+                            <th>Space Complexity</th>
+                            <td>O(n)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="implement_cont">
+            <div class="text-white mt-4 mb-4" id="implement" style="font-size: xx-large; font-weight: 700;"> IMPLEMENTATIONS</div>
+        
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code1" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 15%;" id="menu-btns1">
+                            <div class="p-1 "><h3 class="text-center"> C </h3></div>
+                            <!-- <button><img src="../images/c_icon.png" width="32" height="32" title="C" alt="C"></button>    -->
+                        </div> 
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+void quickSort(int array[], int low, int high) 
+{
+    if (low < high) {
+      
+      // find the pivot element such that
+      // elements smaller than pivot are on left of pivot
+      // elements greater than pivot are on right of pivot
+      int pi = partition(array, low, high);
+      
+      // recursive call on the left of pivot
+      quickSort(array, low, pi - 1);
+      
+      // recursive call on the right of pivot
+      quickSort(array, pi + 1, high);
+    }
+}
+
+// function to find the partition position
+int partition(int array[], int low, int high) 
+{
+  
+  // select the rightmost element as pivot
+  int pivot = array[high];
+  
+  // pointer for greater element
+  int i = (low - 1);
+
+  // traverse each element of the array
+  // compare them with the pivot
+  for (int j = low; j < high; j++) 
+  {
+    if (array[j] <= pivot) {
+        
+      // if element smaller than pivot is found
+      // swap it with the greater element pointed by i       
+      i++;
+      
+      // swap element at i with element at j
+      swap(&array[i], &array[j]);
+    }
+  }
+
+  // swap the pivot element with the greater element at i   
+  swap(&array[i + 1], &array[high]);
+  
+  // return the partition point
+  return (i + 1);
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code2" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 20%;" id="menu-btns2">
+                            <div class="p-1 "><h3 class="text-center"> C++ </h3></div>
+                            <!-- <button><img src="../images/cpp_icon.png" width="32" height="32" title="C++" alt="C++"></button>   -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+void quickSort(int arr[], int start, int end)
+{
+     
+    // base case
+    if (start >= end)
+        return;
+     
+    // partitioning the array
+    int p = partition(arr, start, end);                  
+     
+    // Sorting the left part
+    quickSort(arr, start, p - 1);
+     
+    // Sorting the right part
+    quickSort(arr, p + 1, end);
+}
+
+
+int partition(int arr[], int start, int end)
+{
+ 
+    int pivot = arr[start];
+ 
+    int count = 0;
+    for (int i = start + 1; i <= end; i++) {
+        if (arr[i] <= pivot)
+            count++;
+    }
+ 
+    // Giving pivot element its correct position
+    int pivotIndex = start + count;
+    swap(arr[pivotIndex], arr[start]);
+ 
+    // Sorting left and right parts of the pivot element     
+    int i = start, j = end;
+ 
+    while (i < pivotIndex && j > pivotIndex) {
+ 
+        while (arr[i] <= pivot) {
+            i++;
+        }
+ 
+        while (arr[j] > pivot) {
+            j--;
+        }
+ 
+        if (i < pivotIndex && j > pivotIndex) {
+            swap(arr[i++], arr[j--]);
+        }
+    }
+ 
+    return pivotIndex;
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code3" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 22%;" id="menu-btns3">
+                            <div class="p-1 "><h3 class="text-center"> Java </h3></div>
+                            <!-- <button><img src="../images/java_icon.png" width="32" height="32" title="Java" alt="Java"></button>    -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+class Quicksort 
+{
+    // method to find the partition position
+    static int partition(int array[], int low, int high) 
+    {
+      
+      // choose the rightmost element as pivot
+      int pivot = array[high];
+      
+      // pointer for greater element
+      int i = (low - 1);
+  
+      // traverse through all elements
+      // compare each element with pivot
+      for (int j = low; j < high; j++) 
+      {
+        if (array[j] <= pivot) 
+        {
+  
+          // if element smaller than pivot is found
+          // swap it with the greater element pointed by i   
+          i++;
+  
+          // swapping element at i with element at j
+          int temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+  
+      }
+  
+      // swapt the pivot element with the greater element
+      // specified by i
+      int temp = array[i + 1];
+      array[i + 1] = array[high];
+      array[high] = temp;
+  
+      // return the position from where partition is done
+      return (i + 1);
+    }
+  
+    static void quickSort(int array[], int low, int high) 
+    {
+      if (low < high) 
+      {
+  
+        // find pivot element such that
+        // elements smaller than pivot are on the left
+        // elements greater than pivot are on the right
+        int pi = partition(array, low, high);
+        
+        // recursive call on the left of pivot
+        quickSort(array, low, pi - 1);
+  
+        // recursive call on the right of pivot
+        quickSort(array, pi + 1, high);
+      }
+    }
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code4" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 38%;" id="menu-btns4">
+                            <div class="p-1 "><h3 class="text-center"> JavaScript </h3></div>
+                            <!-- <button><img src="../images/javascript_icon.png" width="32" height="32" title="JavaScript" alt="JavaScript"></button>    -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+function quickSort(arr, low, high) 
+{
+	if (low < high) 
+    {
+        //pi is partition index,arr[p] is now at right place 
+        let pi = partition(arr, low, high);
+
+        //Separately sort elements before
+        //partition and after partition
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+function partition(arr, low, high) 
+{
+
+	// pivot
+	let pivot = arr[high];
+
+	// Index of smaller element and
+	// indicates the right position
+	// of pivot found so far
+	let i = (low - 1);
+
+	for (let j = low; j <= high - 1; j++) 
+    {
+        // If current element is smaller than the pivot
+        if (arr[j] < pivot)
+        {
+            // Increment index of smaller element
+            i++;
+            swap(arr, i, j);
+        }
+    }
+	swap(arr, i + 1, high);
+	return (i + 1);
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code5" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 28%;" id="menu-btns5">
+                            <div class="p-1 "><h3 class="text-center"> Python </h3></div>
+                            <!-- <button><img src="../images/python_icon.png" width="32" height="32" title="Python" alt="Python"></button>   -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+# function to perform quicksort
+def quickSort(array, low, high):
+    if low < high:
+  
+      # find pivot element such that
+      # element smaller than pivot are on the left
+      # element greater than pivot are on the right
+      pi = partition(array, low, high)
+  
+      # recursive call on the left of pivot
+      quickSort(array, low, pi - 1)
+  
+      # recursive call on the right of pivot
+      quickSort(array, pi + 1, high)
+
+# function to find the partition position
+def partition(array, low, high):
+
+    # choose the rightmost element as pivot
+    pivot = array[high]
+
+    # pointer for greater element
+    i = low - 1
+
+    # traverse through all elements
+    # compare each element with pivot
+    for j in range(low, high):
+      if array[j] <= pivot:
+        # if element smaller than pivot is found
+        # swap it with the greater element pointed by i
+        i = i + 1
+  
+        # swapping element at i with element at j
+        (array[i], array[j]) = (array[j], array[i])
+  
+    # swap the pivot element with the 
+    # greater element specified by i
+    (array[i + 1], array[high]) = (array[high], array[i + 1])
+  
+    # return the position from where partition is done
+    return i + 1  
+</pre>                    
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
+
+    <footer class="container-fluid p-0 text-center text-white">
+        <div class="container-fluid pt-1 footer-top" style="background-color:#0a041c;">
+            <section class="">
+                <div class="container text-center text-md-start">
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+
+                            <h4 class="fw-bold mb-3">
+                                <i class="bi bi-bar-chart"></i> VisuAL
+                            </h4>
+                            <p>
+                                Created On HTML5,CSS & BOOTSTRAP 5.0
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                Creators
+                            </h4>
+                            <p>
+                                <a href="#!">Aradhna Nigam</a>
+                            </p>
+                            <p>
+                                <a href="#!">Abhay Kumar Dhuriya</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                References
+                            </h4>
+                            <p>
+                                <a href="#!">getbootstrap.com</a>
+                            </p>
+                            <p>
+                                <a href="#!">w3schools.com</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- HTML !-->
+
+
+        </div>
+
+        <div class="container-fluid pt-2 social-media" style="background-color: rgba(0, 0, 0, 1);">
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/AbhayKDhuriya" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-twitter"></i></a>
+            <a href="https://www.google.com/" class="btn btn-lg text-light m-1"><i class="bi bi-google"></i></a>
+            <a href="https://www.instagram.com/aradhna_1730/" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="www.linkedin.com/in/abhaykumar619" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-linkedin"></i></a>
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-github"></i></a>
+        </div>
+
+    </footer>
+
+    <script src="../JavaScript/index.js"></script>
+    <script src="../JavaScript/quick.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
+

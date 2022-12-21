@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document2</title>
+    <link rel="stylesheet" href="./CSS/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;600;700&family=Jura:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid p-0">
+            <nav id="navbar" class="navbar navbar-dark navbar-expand-xlg p-0">
+                <div>
+                    <div class="symbol" onclick="openNav()">&#9776;</div>
+
+                    <div id="brand-name" class="navbar-header">
+                        <a href="./index.html" class="navbar-brand">
+                            <h3 id="heading" style="font-size: xx-large; font-weight: 700;">VisuAL</h3>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="mySidebar" class="sidenav">
+            <a href="#" class="closebtn side-element pl-3" onclick="closeNav()">&times;</a>
+            <div><a href="./index.html" class="side-element pl-3 pb-5 border-bottom"><i class="fa fa-home"></i> Home</a></div>
+            <span class="side-element pl-3 pb-5"><i class="fa fa-bar-chart"></i> Sorts</span>
+            <span class="sort-type pl-3">Quadratic</span>
+            <ul>
+                <li><a href="./Sorts/bubble.html">Bubble Sort</a></li>
+                <li><a href="./Sorts/selection.html">Seletion Sort</a></li>
+                <li><a href="./Sorts/insertion.html">Insertion sort</a></li>
+                <li><a href="./Sorts/bucket.html">Bucket sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Lograthmic</span>
+            <ul>
+                <li><a href="./Sorts/quick.html">Quick Sort</a></li>
+                <li><a href="./Sorts/merge.html">Merge Sort</a></li>
+                <li><a href="./Sorts/heap.html">Heap sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Weird</span>
+            <ul>
+                <li><a href="./Sorts/radix.html">Radix Sort</a></li>
+                <li><a href="./Sorts/counting.html">Counting Sort</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container" id="title">
+        <div class="typewriter">
+            <h1>VisuAL</h1>
+            <h3>Algorithm Visualizer</h3>
+        </div>
+    </div>
+
+
+    <div class="container-fluid " id="boxholder">
+        <!-- Outer Container-fluid for giving background opacity effect-->
+        <div class="container-fluid content pb-5">
+            <h1 class="pt-3 pb-3" style="font-family: 'Changa', sans-serif ; font-weight: 600;">Sorting Algorithm</h1>
+            Sorting is a process of rearranging of items, which are possible to compare, in ascending or descending order. In the text we are meaning only ascending order if not stated in a different way.  <br> <br>
+            This operation is one of the most important and widespread in computer science. For a long time, new methods
+            have been developed to make this procedure faster and faster. <br> <br>
+            There are currently hundreds of different sorting algorithms, each with its own specific characteristics.
+            They
+            are classified according to two metrics: space complexity and time complexity. <br> <br>
+            Those two kinds of complexity are represented with asymptotic notations, mainly with the symbols O, Θ, Ω,
+            representing respectively the upper bound, the tight bound, and the lower bound of the algorithm's
+            complexity,
+            specifying in brackets an expression in terms of n, the number of the elements of the data structure. <br>
+            <br>
+            Most of them fall into two categories: <br>
+            <ul>
+                <li>
+                    <h5>Logarithmic</h5>
+                </li>
+                <li>
+                    <h5>Quadratic</h5>
+                </li>
+            </ul>
+
+            Space and time complexity can also be further subdivided into 3 different cases: best case, average case and
+            worst case. <br> <br>
+
+            Sorting algorithms can be difficult to understand and it's easy to get confused. We believe visualizing
+            sorting
+            algorithms can be a great way to better understand their functioning while having fun! <br>
+
+        </div>
+        <div class="container full pb-3">
+            <!--container within container-fluid because 3 boxes were not arranging in middle -->
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-xs-12 p-0">
+                    <div class="m-3 p-4 box" data-aos="fade-right" data-aos-duration="1000" id="box1">
+                        <h3 class="text-center" style="font-weight: 700">Quadratic</h3>
+                        <p class="text-justify">
+                            A sorting algorithm where the running time increases non-linearly (n<sup>2</sup>) with the length of the input is said to have Quadratic time complexity. Generally, under this order nested loops come where one loop takes O(n) and if the function involves a loop within a loop, then it goes for:<br><br><b>O(n)*O(n) = O(n<sup>2</sup>)</b><br><br>Some sorting algorithms that come under this category:
+                        <ul>
+                            <li>Bubble Sort</li>
+                            <li>Selection Sort</li>
+                            <li>Insertion Sort</li>
+                            <li>Bucket Sort</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-xs-12 p-0">
+                    <div class="m-3 p-4 box" data-aos="flip-left" data-aos-duration="1000" id="box2">
+                        <h3 class="text-center" style="font-weight:700">Logarithmic</h3>
+                        <p class="text-justify">
+                            A sorting algorithm where the running time increases logarithmically (n<sup>2</sup>) with the length of the input is said to have Logarithmic time complexity.In this, the number of operations is not the same as the input size. This involves the search of a given value in an array by splitting the array into two and starting searching in one split.<br><br><b>O(log n), O(n*log n), O(log(log n))</b><br><br>Some sorting algorithms that come under this category:
+                        <ul>
+                            <li>Quick Sort</li>
+                            <li>Merge Sort Sort</li>
+                            <li>Heap Sort</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 p-0">
+                    <div class="m-3 p-4 box" data-aos="fade-left" data-aos-duration="1000" id="box3">
+                        <h3 class="text-center" style="font-weight: 700">Weird</h3>
+                        <p>
+                            A sorting algorithm where running time can not be categorized by any pre-defined types of complexity is said to be Weird Sorting.<br>These sortings have their own formula to calculate the time complexities.<br>
+                            The formula can change with the change in the size of input as formulae are based on the length of the input.<br><br><b>O(p*(n+d)), O(n+k)</b><br><br>Some sorting algorithms that come under this category:
+                            <ul>
+                                <li>Radix Sort</li>
+                                <li>Counting Sort</li>
+                                <li>Bitonic Sort</li>
+                            </ul>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col text-center pb-5">
+                <button class="button-36" onclick="openNav()">Button 36</button>
+            </div> -->
+            <!-- <div class="col text-center pb-5">
+                <button class="button-63" onclick="openNav()">Button 63</button>
+            </div> -->
+            <div class="col text-center pb-5">
+                <button class="button-64" onclick="openNav()"><span class="text" style="font-family: 'Changa', sans-serif ">Learn More</span></button>
+            </div>
+            <!--<div class="col text-center pb-5">
+                <button class="button-69" onclick="openNav()">Button 69</button>
+            </div> -->
+        </div>
+
+    </div>
+    <footer class="container-fluid p-0 text-center text-white">
+        <div class="container-fluid pt-1 footer-top" style="background-color:#0a041c;">
+            <section class="">
+                <div class="container text-center text-md-start">
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+
+                            <h4 class="fw-bold mb-3">
+                                <i class="bi bi-bar-chart"></i> VisuAL
+                            </h4>
+                            <p>
+                                Created On HTML5,CSS & BOOTSTRAP 5.0
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                Creators
+                            </h4>
+                            <p>
+                                <a href="#!">Aradhna Nigam</a>
+                            </p>
+                            <p>
+                                <a href="#!">Abhay Kumar Dhuriya</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                References
+                            </h4>
+                            <p>
+                                <a href="#!">getbootstrap.com</a>
+                            </p>
+                            <p>
+                                <a href="#!">w3schools.com</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- HTML !-->
+
+
+        </div>
+
+        <div class="container-fluid pt-2 social-media" style="background-color: rgba(0, 0, 0, 1);">
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/AbhayKDhuriya" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-twitter"></i></a>
+            <a href="https://www.google.com/" class="btn btn-lg text-light m-1"><i class="bi bi-google"></i></a>
+            <a href="https://www.instagram.com/aradhna_1730/" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="www.linkedin.com/in/abhaykumar619" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-linkedin"></i></a>
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-github"></i></a>
+        </div>
+
+    </footer>
+    <script src="./JavaScript/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

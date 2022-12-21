@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radix Sort</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/bubble.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;600;700&family=Jura:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../CSS/index.css"> -->
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid p-0">
+            <nav id="navbar" class="navbar navbar-dark navbar-expand-xlg p-0">
+                <div>
+                    <div class="symbol" onclick="openNav()">&#9776;</div>
+
+                    <div id="brand-name" class="navbar-header">
+                        <a href="../index.html" class="navbar-brand">
+                            <h3 id="heading" style="font-size: xx-large; font-weight: 700;">VisuAL</h3>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="mySidebar" class="sidenav">
+            <a href="#" class="closebtn side-element pl-3" onclick="closeNav()">&times;</a>
+            <div><a href="../index.html" class="side-element pl-3 pb-5 border-bottom"><i class="fa fa-home"></i> Home</a></div>
+            <span class="side-element pl-3 pb-5"><i class="fa fa-bar-chart"></i> Sorts</span>
+            <span class="sort-type pl-3">Quadratic</span>
+            <ul>
+                <li><a href="./bubble.html">Bubble Sort</a></li>
+                <li><a href="./selection.html">Seletion Sort</a></li>
+                <li><a href="./insertion.html">Insertion sort</a></li>
+                <li><a href="./bucket.html">Bucket sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Lograthmic</span>
+            <ul>
+                <li><a href="./quick.html">Quick Sort</a></li>
+                <li><a href="./merge.html">Merge Sort</a></li>
+                <li><a href="./heap.html">Heap sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Weird</span>
+            <ul>
+                <li><a href="./radix.html">Radix Sort</a></li>
+                <li><a href="./counting.html">Counting Sort</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <h1 class="text-light ml-5 mt-5 mb-5 s_head">R A D I X&nbsp&nbsp S O R T</h1>
+    <div class="container container2">
+        <div class="row text-center">
+            <div class="col col-8 ml-5 bars_container" id="bars_container">
+            </div>
+
+            <div class="col buttons_container">
+                <h3 class="text-light">SIZE <span id="demo"></span></h3>
+                <input type="range" id="slider" min="10" max="50" step="5" value="10" />
+                <button id="randomize_array_btn" class="button-64 mb-5 mt-5" style="font-family: 'Changa', sans-serif "><span id="boot-icon"
+                        class="bi bi-shuffle"></span></button>
+                <button id="sort_btn" class="button-64 " style="font-family: 'Changa', sans-serif ">Sort</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid content-desc">
+        <div class="row">
+            <div class="col col-lg-6 col-sm-12 text-white" id="desreption">
+                <h2 class="mb-4" style="font-size: xx-large; font-weight: 700;" >DESCRIPTION</h2>
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    The Radix sorting algorithm is based on the idea of using separate digits to determine final number positions. It works with the help of some stable sorting algorithm, for example Counting Sort, taking digits one by one from least significant to most significant. <br><br>
+                    Let d be the number of digits of the largest item from the array. If there are numbers from the array that have less count of digits than the d is, then insufficient digits are counted as digits with zero values.
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="text-white text-center" id="complex" style="font-size: xx-large; font-weight: 700;"  >COMPLEXITY</div>
+                <div class="p-3" data-aos="flip-left" data-aos-duration="1000" id="comp">
+                    <table class="sort-table text-white" >
+                        <tr>
+                            <th>Average Complexity</th>
+                            <td>Θ(n*k)</td>
+                        </tr>
+                        <tr>
+                            <th>Best Case</th>
+                            <td>Ω(n*k)</td>
+                        </tr>
+                        <tr>
+                            <th>Worst Case</th>
+                            <td>O(n*k)</td>
+                        </tr>
+                        <tr>
+                            <th>Space Complexity</th>
+                            <td>O(n+k)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="implement_cont">
+            <div class="text-white mt-4 mb-4" id="implement" style="font-size: xx-large; font-weight: 700;"> IMPLEMENTATIONS</div>
+        
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code1" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 15%;" id="menu-btns1">
+                            <div class="p-1 "><h3 class="text-center"> C </h3></div>
+                            <!-- <button><img src="../images/c_icon.png" width="32" height="32" title="C" alt="C"></button>    -->
+                        </div> 
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+void radix_sort (int a[], int n)
+{
+    int bucket[10][10], bucket_cnt[10];
+    int i, j, k, r, NOP = 0, divisor = 1, lar, pass;         
+    lar = get_max (a, n);
+    while (lar > 0)
+    {
+       NOP++;
+       lar /= 10;
+    }
+    for (pass = 0; pass < NOP; pass++)
+    {
+       for (i = 0; i < 10; i++)
+       {
+          bucket_cnt[i] = 0;
+       }
+       for (i = 0; i < n; i++)
+       {
+          r = (a[i] / divisor) % 10;
+          bucket[r][bucket_cnt[r]] = a[i];
+          bucket_cnt[r] += 1;
+       }
+       i = 0;
+       for (k = 0; k < 10; k++)
+       {
+            for (j = 0; j < bucket_cnt[k]; j++)
+            {
+                a[i] = bucket[k][j];
+                i++;
+            }
+        }
+        divisor *= 10;
+        printf ("After pass %d : ", pass + 1);
+        for (i = 0; i < n; i++)
+            printf ("%d ", a[i]);
+        printf (" ");
+    }
+}
+
+int get_max (int a[], int n)
+{
+    int max = a[0];
+    for (int i = 1; i < n; i++)
+        if (a[i] > max)
+            max = a[i];
+    return max;
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code2" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 20%;" id="menu-btns2">
+                            <div class="p-1 "><h3 class="text-center"> C++ </h3></div>
+                            <!-- <button><img src="../images/cpp_icon.png" width="32" height="32" title="C++" alt="C++"></button>   -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+void radixsort(int arr[], int n)
+{
+    // Find the maximum number to know number of digits
+    int m = getMax(arr, n);
+     
+    // Do counting sort for every digit.Note that instead
+    // of passing digit number, exp is passed. 
+    //exp is 10^i where i is current digit number
+    for (int exp = 1; m / exp > 0; exp *= 10)
+        countSort(arr, n, exp);
+}
+
+int getMax(int arr[], int n)
+{
+    int mx = arr[0];
+    for (int i = 1; i < n; i++)
+        if (arr[i] > mx)
+            mx = arr[i];
+    return mx;
+}
+     
+// A function to do counting sort of arr[] 
+//according to the digit represented by exp.
+void countSort(int arr[], int n, int exp)
+{
+    int output[n]; // output array
+    int i, count[10] = { 0 };
+     
+    // Store count of occurrences in count[]
+    for (i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+     
+    // Change count[i] so that count[i] now contains         
+    // actual position of this digit in output[]
+    for (i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+     
+    // Build the output array
+    for (i = n - 1; i >= 0; i--) 
+    {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+     
+    // Copy the output array to arr[], so that arr[] 
+    //now contains sorted numbers according to 
+    // current digit
+    for (i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code3" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 22%;" id="menu-btns3">
+                            <div class="p-1 "><h3 class="text-center"> Java </h3></div>
+                            <!-- <button><img src="../images/java_icon.png" width="32" height="32" title="Java" alt="Java"></button>    -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+static void radixsort(int arr[], int n)
+{
+    // Find the maximum number to know number of digits
+    int m = getMax(arr, n);
+ 
+    // Do counting sort for every digit. Note that
+    // instead of passing digit number, exp is passed.   
+    // exp is 10^i where i is current digit number
+    for (int exp = 1; m / exp > 0; exp *= 10)
+        countSort(arr, n, exp);
+}
+
+
+static int getMax(int arr[], int n)
+{
+    int mx = arr[0];
+    for (int i = 1; i < n; i++)
+        if (arr[i] > mx)
+            mx = arr[i];
+    return mx;
+}
+ 
+// A function to do counting sort of arr[] according to
+// the digit represented by exp.
+static void countSort(int arr[], int n, int exp)
+{
+    int output[] = new int[n]; // output array
+    int i;
+    int count[] = new int[10];
+    Arrays.fill(count, 0);
+ 
+    // Store count of occurrences in count[]
+    for (i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+ 
+    // Change count[i] so that count[i] now contains         
+    // actual position of this digit in output[]
+    for (i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+ 
+    // Build the output array
+    for (i = n - 1; i >= 0; i--) {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+ 
+    // Copy the output array to arr[], so that arr[] now
+    // contains sorted numbers according to current
+    // digit
+    for (i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code4" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 38%;" id="menu-btns4">
+                            <div class="p-1 "><h3 class="text-center"> JavaScript </h3></div>
+                            <!-- <button><img src="../images/javascript_icon.png" width="32" height="32" title="JavaScript" alt="JavaScript"></button>    -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+function radixsort(arr,n)
+{
+    // Find the maximum number to know number of digits
+    let m = getMax(arr, n);
+
+    // Do counting sort for every digit. Note that
+    // instead of passing digit number, exp is passed.
+    // exp is 10^i where i is current digit number
+    for (let exp=1; Math.floor(m/exp)>0; exp*=10)
+        countSort(arr, n, exp);
+}
+
+function getMax(arr,n)
+{
+    let mx = arr[0];
+    for (let i = 1; i < n; i++)
+        if (arr[i] > mx)
+            mx = arr[i];
+    return mx;
+}
+     
+// A function to do counting sort of arr[] according to
+// the digit represented by exp.
+function countSort(arr,n,exp)
+{
+    let output = new Array(n); // output array
+    let i;
+    let count = new Array(10);
+    for(let i=0;i< 10;i++)
+        count[i]=0;
+
+    // Store count of occurrences in count[]
+    for (i = 0; i < n; i++)
+        count[Math.floor(arr[i] / exp) % 10]++;
+
+    // Change count[i] so that count[i] now contains
+    // actual position of this digit in output[]
+    for (i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    // Build the output array
+    for (i = n - 1; i >= 0; i--) {
+      output[count[Math.floor(arr[i] / exp) %10] - 1]=arr[i];
+    count[Math.floor(arr[i] / exp) % 10]--;
+    }
+
+    // Copy the output array to arr[], so that arr[] now
+    // contains sorted numbers according to current digit
+    for (i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code5" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 28%;" id="menu-btns5">
+                            <div class="p-1 "><h3 class="text-center"> Python </h3></div>
+                            <!-- <button><img src="../images/python_icon.png" width="32" height="32" title="Python" alt="Python"></button>   -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+def radixSort(array):
+    # Get maximum element
+    max_element = max(array)
+
+   # Apply countingSort to sort elements based on place value
+    place = 1
+    while max_element // place > 0:
+        countingSort(array, place)
+        place *= 10
+
+def countingSort(array, place):
+    size = len(array)
+    output = [0] * size
+    count = [0] * 10
+
+    # Calculate count of elements
+    for i in range(0, size):
+        index = array[i] // place
+        count[index % 10] += 1
+
+    # Calculate cumulative count
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    # Place the elements in sorted order
+    i = size - 1
+    while i >= 0:
+        index = array[i] // place
+        output[count[index % 10] - 1] = array[i]
+        count[index % 10] -= 1
+        i -= 1
+
+    for i in range(0, size):
+        array[i] = output[i]
+</pre>                    
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
+
+    <footer class="container-fluid p-0 text-center text-white">
+        <div class="container-fluid pt-1 footer-top" style="background-color:#0a041c;">
+            <section class="">
+                <div class="container text-center text-md-start">
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+
+                            <h4 class="fw-bold mb-3">
+                                <i class="bi bi-bar-chart"></i> VisuAL
+                            </h4>
+                            <p>
+                                Created On HTML5,CSS & BOOTSTRAP 5.0
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                Creators
+                            </h4>
+                            <p>
+                                <a href="#!">Aradhna Nigam</a>
+                            </p>
+                            <p>
+                                <a href="#!">Abhay Kumar Dhuriya</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                References
+                            </h4>
+                            <p>
+                                <a href="#!">getbootstrap.com</a>
+                            </p>
+                            <p>
+                                <a href="#!">w3schools.com</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- HTML !-->
+
+
+        </div>
+
+        <div class="container-fluid pt-2 social-media" style="background-color: rgba(0, 0, 0, 1);">
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/AbhayKDhuriya" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-twitter"></i></a>
+            <a href="https://www.google.com/" class="btn btn-lg text-light m-1"><i class="bi bi-google"></i></a>
+            <a href="https://www.instagram.com/aradhna_1730/" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="www.linkedin.com/in/abhaykumar619" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-linkedin"></i></a>
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-github"></i></a>
+        </div>
+
+    </footer>
+
+    <script src="../JavaScript/index.js"></script>
+    <script src="../JavaScript/radix.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

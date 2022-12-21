@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            width: 0px;
+            height: 100%;
+            background-color: blue;
+            position: fixed;
+            transition: 0.5s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .close {
+            background-color: red;
+            flex: auto;
+        }
+
+        .open {
+            background-color: brown;
+        }
+
+        .button-64 {
+            align-items: center;
+            background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            /* display: flex; */
+            display: inline-flex;
+            font-family: Phantomsans, sans-serif;
+            font-size: 20px;
+            /* justify-content: right; */
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 3px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .button-64:active,
+        .button-64:hover {
+            outline: 0;
+        }
+
+        .button-64 span {
+            background-color: rgb(5, 6, 45);
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+        }
+
+        .button-64:hover span {
+            background: none;
+        }
+
+        @media (min-width: 768px) {
+            .button-64 {
+                font-size: 24px;
+                min-width: 196px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar  text-right" id="sidenav">
+        <span id="close" onclick="closeNav()">
+            X
+        </span>
+    </div>
+
+    <div class="text-right" id="open">
+        <button onclick="openNav()">open</button>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center pb-5">
+                <button class="button-64" onclick="openNav()"><span class="text">Button 64</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-box">
+        <div style="font-family: 'Jura', Courier, monospace; font-size: 35px; margin-top:500px  ;">COMPLEXITY</div>
+        <table class="sort-table" data-aos="fade-right">
+            <tr>
+                <th>
+                    Average Complexity
+                </th>
+                <td>
+
+                    O(n × log n)
+
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Best Case
+                </th>
+                <td>
+
+                    O(n × log n)
+
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Worst Case
+                </th>
+                <td>
+
+                    O(n<sup>2</sup>)
+
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Space Complexity
+                </th>
+                <td>
+
+                    O(n)
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("sidenav").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("sidenav").style.width = "0px";
+        }
+        function handleMousePos(event) {
+            var mouseClickWidth = event.clientX;
+            if (mouseClickWidth >= 270) {
+                closeNav();
+            }
+        }
+        document.addEventListener("click", handleMousePos);
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Sort</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/bubble.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;600;700&family=Jura:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../CSS/index.css"> -->
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid p-0">
+            <nav id="navbar" class="navbar navbar-dark navbar-expand-xlg p-0">
+                <div>
+                    <div class="symbol" onclick="openNav()">&#9776;</div>
+
+                    <div id="brand-name" class="navbar-header">
+                        <a href="../index.html" class="navbar-brand">
+                            <h3 id="heading" style="font-size: xx-large; font-weight: 700;">VisuAL</h3>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="mySidebar" class="sidenav">
+            <a href="#" class="closebtn side-element pl-3" onclick="closeNav()">&times;</a>
+            <div><a href="../index.html" class="side-element pl-3 pb-5 border-bottom"><i class="fa fa-home"></i> Home</a></div>
+            <span class="side-element pl-3 pb-5"><i class="fa fa-bar-chart"></i> Sorts</span>
+            <span class="sort-type pl-3">Quadratic</span>
+            <ul>
+                <li><a href="./bubble.html">Bubble Sort</a></li>
+                <li><a href="./selection.html">Seletion Sort</a></li>
+                <li><a href="./insertion.html">Insertion sort</a></li>
+                <li><a href="./bucket.html">Bucket sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Lograthmic</span>
+            <ul>
+                <li><a href="./quick.html">Quick Sort</a></li>
+                <li><a href="./merge.html">Merge Sort</a></li>
+                <li><a href="./heap.html">Heap sort</a></li>
+            </ul>
+            <span class="sort-type pl-3">Weird</span>
+            <ul>
+                <li><a href="./radix.html">Radix Sort</a></li>
+                <li><a href="./counting.html">Counting Sort</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <h1 class="text-light ml-5 mt-5 mb-5 s_head">H E A P&nbsp&nbsp S O R T</h1>
+    <div class="container container2">
+        <div class="row text-center">
+            <div class="col col-8 ml-5 bars_container" id="bars_container">
+            </div>
+
+            <div class="col buttons_container">
+                <h3 class="text-light">SIZE <span id="demo"></span></h3>
+                <input type="range" id="slider" min="10" max="50" step="5" value="10" />
+                <button id="randomize_array_btn" class="button-64 mb-5 mt-5" style="font-family: 'Changa', sans-serif "><span id="boot-icon"
+                        class="bi bi-shuffle"></span></button>
+                <button id="sort_btn" class="button-64 " style="font-family: 'Changa', sans-serif ">Sort</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid content-desc">
+        <div class="row">
+            <div class="col col-lg-6 col-sm-12 text-white" id="desreption">
+                <h2 class="mb-4" style="font-size: xx-large; font-weight: 700;" >DESCRIPTION</h2>
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    Heap Sort is a selection-based algorithm and it offers another interesting approach to sorting.
+                    Binary heap is a complete binary tree; it means that all levels of tree, except the last one, must be completely filled with nodes. <br><br>
+                    To build max-heap from current node we need to assure that right and left children comprise max-heaps. This way, in the first step procedure for building max-heap is recursively applied for each node that has at least one child from bottom to top. <br><br>
+                    After each swap of the root node and the node at last considered position, the last node takes its final place. This way it joins the sorted part of an array.
+
+                    
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="text-white text-center" id="complex" style="font-size: xx-large; font-weight: 700;"  >COMPLEXITY</div>
+                <div class="p-3" data-aos="flip-left" data-aos-duration="1000" id="comp">
+                    <table class="sort-table text-white" >
+                        <tr>
+                            <th>Average Complexity</th>
+                            <td>Θ(n*log n)</td>
+                        </tr>
+                        <tr>
+                            <th>Best Case</th>
+                            <td>Ω(n*log n)</td>
+                        </tr>
+                        <tr>
+                            <th>Worst Case</th>
+                            <td>O(n*log n)</td>
+                        </tr>
+                        <tr>
+                            <th>Space Complexity</th>
+                            <td>O(1)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="implement_cont">
+            <div class="text-white mt-4 mb-4" id="implement" style="font-size: xx-large; font-weight: 700;"> IMPLEMENTATIONS</div>
+        
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code1" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 15%;" id="menu-btns1">
+                            <div class="p-1 "><h3 class="text-center"> C </h3></div>
+                            <!-- <button><img src="../images/c_icon.png" width="32" height="32" title="C" alt="C"></button>    -->
+                        </div> 
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+void heapSort(int arr[], int n) 
+{
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--)
+      heapify(arr, n, i);
+  
+     // Heap sort
+    for (int i = n - 1; i >= 0; i--) 
+    {
+      swap(&arr[0], &arr[i]);
+  
+      //Heapify root element to get highest element at root  
+      heapify(arr, i, 0);
+    }
+}
+void heapify(int arr[], int n, int i) 
+{
+    // Find largest among root, left child and right child
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+  
+    if (left < n && arr[left] > arr[largest])
+      largest = left;
+  
+    if (right < n && arr[right] > arr[largest])
+      largest = right;
+  
+    // Swap and continue heapifying if root is not largest
+    if (largest != i) 
+    {
+       swap(&arr[i], &arr[largest]);
+       heapify(arr, n, largest);
+    }
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code2" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 20%;" id="menu-btns2">
+                            <div class="p-1 "><h3 class="text-center"> C++ </h3></div>
+                            <!-- <button><img src="../images/cpp_icon.png" width="32" height="32" title="C++" alt="C++"></button>   -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+void heapSort(int arr[], int N)
+{
+     
+    // Build heap (rearrange array)
+    for (int i = N / 2 - 1; i >= 0; i--)
+        heapify(arr, N, i);
+     
+    // One by one extract an element from heap           
+    for (int i = N - 1; i > 0; i--) {
+     
+        // Move current root to end
+        swap(arr[0], arr[i]);
+     
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0);
+    }
+}
+
+void heapify(int arr[], int N, int i)
+{
+     
+    // Initialize largest as root
+    int largest = i;
+     
+    // left = 2*i + 1
+    int l = 2 * i + 1;
+     
+    // right = 2*i + 2
+    int r = 2 * i + 2;
+     
+    // If left child is larger than root 
+    if (l < N && arr[l] > arr[largest])
+        largest = l;
+     
+    // If right child is larger than largest so far        
+    if (r < N && arr[r] > arr[largest])
+        largest = r;
+     
+    // If largest is not root
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+     
+        // Recursively heapify the affected sub-tree
+        heapify(arr, N, largest);
+    }
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code3" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 22%;" id="menu-btns3">
+                            <div class="p-1 "><h3 class="text-center"> Java </h3></div>
+                            <!-- <button><img src="../images/java_icon.png" width="32" height="32" title="Java" alt="Java"></button>    -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+public void sort(int arr[])
+{
+    int N = arr.length;
+ 
+    // Build heap (rearrange array)
+    for (int i = N / 2 - 1; i >= 0; i--)
+        heapify(arr, N, i);
+ 
+    // One by one extract an element from heap
+    for (int i = N - 1; i > 0; i--) {
+        // Move current root to end
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+ 
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0);
+    }
+}
+ 
+// To heapify a subtree rooted with node i which is
+// an index in arr[]. n is size of heap
+void heapify(int arr[], int N, int i)
+{
+    int largest = i; // Initialize largest as root
+    int l = 2 * i + 1; // left = 2*i + 1
+    int r = 2 * i + 2; // right = 2*i + 2
+ 
+    // If left child is larger than root
+    if (l < N && arr[l] > arr[largest])
+        largest = l;
+ 
+    // If right child is larger than largest so far          
+    if (r < N && arr[r] > arr[largest])
+        largest = r;
+ 
+    // If largest is not root
+    if (largest != i) 
+    {
+        int swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+ 
+        // Recursively heapify the affected sub-tree
+        heapify(arr, N, largest);
+    }
+}    
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code4" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 38%;" id="menu-btns4">
+                            <div class="p-1 "><h3 class="text-center"> JavaScript </h3></div>
+                            <!-- <button><img src="../images/javascript_icon.png" width="32" height="32" title="JavaScript" alt="JavaScript"></button>    -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+function sort( arr)
+{
+    var N = arr.length;
+ 
+    // Build heap (rearrange array)
+    for (var i = Math.floor(N / 2) - 1; i >= 0; i--)
+        heapify(arr, N, i);
+ 
+    // One by one extract an element from heap
+    for (var i = N - 1; i > 0; i--) {
+        // Move current root to end
+        var temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+ 
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0);
+    }
+}
+ 
+// To heapify a subtree rooted with node i which is      
+// an index in arr[]. n is size of heap
+function heapify(arr, N, i)
+{
+    var largest = i; // Initialize largest as root
+    var l = 2 * i + 1; // left = 2*i + 1
+    var r = 2 * i + 2; // right = 2*i + 2
+ 
+    // If left child is larger than root
+    if (l < N && arr[l] > arr[largest])
+        largest = l;
+ 
+    // If right child is larger than largest so far          
+    if (r < N && arr[r] > arr[largest])
+        largest = r;
+ 
+    // If largest is not root
+    if (largest != i) {
+        var swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+ 
+        // Recursively heapify the affected sub-tree
+        heapify(arr, N, largest);
+    }
+}
+</pre>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 p-1">
+                    <div class="m-3 p-4 box" id="menu-code5" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="menu-btns" style="width: 28%;" id="menu-btns5">
+                            <div class="p-1 "><h3 class="text-center"> Python </h3></div>
+                            <!-- <button><img src="../images/python_icon.png" width="32" height="32" title="Python" alt="Python"></button>   -->
+                        </div>
+                        <div id="code-content" style="overflow-y:scroll; height: 400px; width:fit-content; margin: 0;">
+<pre class="text-light">
+def heapify(arr, n, i):
+    # Find largest among root and children
+    largest = i
+    l = 2 * i + 1
+    r = 2 * i + 2
+
+    if l < n and arr[i] < arr[l]:
+        largest = l
+
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+
+    # If root is not largest,
+    # swap with largest and continue heapifying              
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+
+def heapSort(arr):
+    n = len(arr)
+
+    # Build max heap
+    for i in range(n//2, -1, -1):
+        heapify(arr, n, i)
+
+    for i in range(n-1, 0, -1):
+        # Swap
+        arr[i], arr[0] = arr[0], arr[i]
+
+        # Heapify root element
+        heapify(arr, i, 0)
+</pre>                    
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
+
+    <footer class="container-fluid p-0 text-center text-white">
+        <div class="container-fluid pt-1 footer-top" style="background-color:#0a041c;">
+            <section class="">
+                <div class="container text-center text-md-start">
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+
+                            <h4 class="fw-bold mb-3">
+                                <i class="bi bi-bar-chart"></i> VisuAL
+                            </h4>
+                            <p>
+                                Created On HTML5,CSS & BOOTSTRAP 5.0
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                Creators
+                            </h4>
+                            <p>
+                                <a href="#!">Aradhna Nigam</a>
+                            </p>
+                            <p>
+                                <a href="#!">Abhay Kumar Dhuriya</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 text-left">
+                            <h4 class=" mb-3">
+                                References
+                            </h4>
+                            <p>
+                                <a href="#!">getbootstrap.com</a>
+                            </p>
+                            <p>
+                                <a href="#!">w3schools.com</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- HTML !-->
+
+
+        </div>
+
+        <div class="container-fluid pt-2 social-media" style="background-color: rgba(0, 0, 0, 1);">
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/AbhayKDhuriya" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-twitter"></i></a>
+            <a href="https://www.google.com/" class="btn btn-lg text-light m-1"><i class="bi bi-google"></i></a>
+            <a href="https://www.instagram.com/aradhna_1730/" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-instagram"></i></a>
+            <a href="www.linkedin.com/in/abhaykumar619" class="btn btn-floating btn-lg text-light m-1"><i
+                    class="bi bi-linkedin"></i></a>
+            <a class="btn btn-floating btn-lg text-light m-1"><i class="bi bi-github"></i></a>
+        </div>
+
+    </footer>
+
+    <script src="../JavaScript/index.js"></script>
+    <script src="../JavaScript/heap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
