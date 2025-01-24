@@ -13,7 +13,7 @@ https://abhay619.github.io/SimonsGame/
 
 <h3>Demo Images</h3>:
 <br>
-![Picture1](https://github.com/user-attachments/assets/fd17aa14-bb61-4899-b422-7fe527e81d59)
+<img width="840" alt="image" src="https://github.com/user-attachments/assets/fd17aa14-bb61-4899-b422-7fe527e81d59">
 
 <br>
 ![image](https://github.com/user-attachments/assets/10997b2c-ce5c-4499-afeb-e5ccf4ee3d85)
