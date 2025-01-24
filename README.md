@@ -6,7 +6,7 @@
 <hr>
 
 <h3>Demo</h3>
-https://abhay619.github.io/SimonsGame/
+https://abhay619.github.io/Visual.github.io/
 
 <br>
 <hr>
